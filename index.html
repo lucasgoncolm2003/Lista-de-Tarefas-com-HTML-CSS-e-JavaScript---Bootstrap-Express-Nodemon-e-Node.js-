@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Lista de Tarefas </title>
+        <link href="/public/style.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
+        <div class="m-4">
+            <div class="row g-2">
+            <form method="post">
+                <div class="col-6">
+                    <label class="form-label" for="inputTarefa"><b>Lista de Tarefas: </b></label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <span class="bi-person"></span>
+                        </span>
+                        <input type="text" name="tarefa" class="form-control" placeholder="Título da Tarefa">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="input-group">            
+                        <input type="text" name="descricao" class="form-control" placeholder="Descrição">
+                        <span class="input-group-text">...</span>
+                        <input type="submit" name="acao" value="Inserir" class="btn btn-dark"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+            <% for(let i = 0; i < tarefasList.length; i++){ %>
+                <div class="accordion accordion-flush" id="myAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button type="button" class="accordion-button collapsed" id="botao" data-bs-toggle="collapse" data-bs-target="#collapseOne"><%= tarefasList[i] %></button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                        <div class="card-body">
+                            <p><%= descricaoList[i] %> | <a href="/deletar/<%= i %>" class="bi-x-circle"></a></p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            <% } %> <!-- Repetição de Termos HTML -->
+        </div>
+    </body>
+</html>
